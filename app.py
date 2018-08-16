@@ -7,13 +7,27 @@ import random
 app = Flask(__name__)
 
 
-@app.route("/")
-def hello():
-    adj = open("adj.txt").readlines()
-    make_meme("ƯỚC GÌ " + adj[random.randint(0, len(adj) - 1)], "NHƯ ĐỨC LINH", "templates/template" + str(random.randint(0, 1)) + ".jpg")
-    return render_template('meme.html')
-
-@app.route('/custom', methods=['POST', 'GET'])
-def custom_meme():
-    make_meme("ƯỚC GÌ " + request.form['text'].upper(), "NHƯ ĐỨC LINH", "templates/template" + str(random.randint(0, 1)) + ".jpg")
+@app.route('/', methods=['POST', 'GET'])
+def index():
+    try:
+        adj = request.form['text'].upper()
+        choice = request.form['template']
+    except KeyError:
+        adj = ''
+        choice = 'random'
+    print(adj)
+    print(choice)
+    if choice == 'random' and adj == '':
+        adj = open("adj.txt").readlines()
+        make_meme("ƯỚC GÌ " + adj[random.randint(0, len(adj) - 1)], "NHƯ ĐỨC LINH",
+                  "templates/template" + str(random.randint(0, 1)) + ".jpg")
+    elif adj == '':
+        adj = open("adj.txt").readlines()
+        make_meme("ƯỚC GÌ " + adj[random.randint(0, len(adj) - 1)], "NHƯ ĐỨC LINH",
+                  "templates/" + choice)
+    elif choice == 'random':
+        make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH",
+                  "templates/" + choice)
+    else:
+        make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH", "templates/" + choice)
     return render_template('meme.html')
