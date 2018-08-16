@@ -8,3 +8,9 @@ form {
     display: inline-block;
     text-align: center;
 }
+
+.guide {
+    text-align: center;
+    border-style: dashed;
+    background-color: lightblue;
+}
