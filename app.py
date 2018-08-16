@@ -10,4 +10,9 @@ app = Flask(__name__)
 def hello():
     adj = open("adj.txt").readlines()
     make_meme("ƯỚC GÌ " + adj[random.randint(0, len(adj) - 1)], "NHƯ ĐỨC LINH", "templates/template" + str(random.randint(0, 1)) + ".jpg")
-    return render_template('meme.html', )
+    return render_template('meme.html')
+
+@app.route('/custom')
+def custom_meme(adj):
+    make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH", "templates/template" + str(random.randint(0, 1)) + ".jpg")
+    return render_template('meme.html')
