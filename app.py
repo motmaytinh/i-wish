@@ -30,4 +30,4 @@ def index():
                   "templates/template" + str(random.randint(0, 1)) + ".jpg")
     else:
         make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH", "templates/" + choice)
-    return render_template('meme.html')
+    return render_template('meme.html', list=open("adj.txt").readlines())

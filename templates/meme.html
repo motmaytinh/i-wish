@@ -10,7 +10,12 @@
     <div align="center">
         <form action="/" method="POST">
             Ước gì
-            <input type="text" name="text"> như Đức Linh
+            <input list="text" name="text" /> như Đức Linh
+            <datalist id="text">
+                {% for item in list %}
+                <option value="{{ item }}">
+                {% endfor %}
+            </datalist>
             <br>
             <br> Chọn hình:
             <select name="template">
@@ -18,7 +23,8 @@
                 <option value="template0.jpg">Mặt ngầu vãi đái</option>
                 <option value="template1.jpg">Soái ca sơ mi trắng</option>
             </select>
-            <br><br>
+            <br>
+            <br>
             <input type="submit" value="Cùng tạo meme nào!">
         </form>
     </div>
