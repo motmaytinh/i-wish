@@ -27,7 +27,7 @@ def index():
                   "templates/" + choice)
     elif choice == 'random':
         make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH",
-                  "templates/" + choice)
+                  "templates/template" + str(random.randint(0, 1)) + ".jpg")
     else:
         make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH", "templates/" + choice)
     return render_template('meme.html')
