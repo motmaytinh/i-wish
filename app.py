@@ -18,11 +18,11 @@ def index():
     print(adj)
     print(choice)
     if choice == 'random' and adj == '':
-        adj = open("adj.txt").readlines()
+        adj = open("adj.txt").read().split('\n')
         make_meme("ƯỚC GÌ " + adj[random.randint(0, len(adj) - 1)], "NHƯ ĐỨC LINH",
                   "templates/template" + str(random.randint(0, 1)) + ".jpg")
     elif adj == '':
-        adj = open("adj.txt").readlines()
+        adj = open("adj.txt").read().split('\n')
         make_meme("ƯỚC GÌ " + adj[random.randint(0, len(adj) - 1)], "NHƯ ĐỨC LINH",
                   "templates/" + choice)
     elif choice == 'random':
@@ -30,4 +30,4 @@ def index():
                   "templates/template" + str(random.randint(0, 1)) + ".jpg")
     else:
         make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH", "templates/" + choice)
-    return render_template('meme.html', list=open("adj.txt").readlines())
+    return render_template('meme.html', list=open("adj.txt").read().split('\n'))

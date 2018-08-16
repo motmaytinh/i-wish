@@ -17,7 +17,7 @@
                 {% endfor %}
             </datalist>
             <br>
-            <br> Chọn hình:
+            <br> Chọn hình
             <select name="template">
                 <option value="random">Để Đức Linh quyết định</option>
                 <option value="template0.jpg">Mặt ngầu vãi đái</option>
@@ -29,7 +29,9 @@
         </form>
     </div>
     <div align="center">
-        <img class="center" src="{{url_for('static', filename='temp.png')}}" />
+        <a href="{{url_for('static', filename='temp.png')}}" download>
+            <img class="center" src="{{url_for('static', filename='temp.png')}}" />
+        </a>
     </div>
 </body>
 
