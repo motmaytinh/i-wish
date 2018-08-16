@@ -5,12 +5,19 @@
 }
 
 form {
+    margin: 10px;
     display: inline-block;
     text-align: center;
 }
 
 .guide {
+    margin: 15px;
     text-align: center;
     border-style: dashed;
     background-color: lightblue;
+}
+
+#img {
+    width: 100px;
+    height: 100px;
 }
