@@ -4,6 +4,12 @@
 
 <head>
     <link rel="stylesheet" href="{{url_for('static', filename='styles.css')}}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -37,14 +43,53 @@
             </select>
             <br>
             <br>
-            <input type="submit" value="Thật thú zị!">
+            <button type="button" class="shadow-sm btn btn-primary" id="submit-qas" onmouseup="genMeme()">
+                <span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display:none;"></span>
+                Thặc thú zị
+            </button>
         </form>
     </div>
     <div align="center" id="img">
-        <a href="{{url_for('static', filename='temp.png')}}" download>
-            <img class="center" src="{{url_for('static', filename='temp.png')}}" />
-        </a>
+        <img id="imgElem"></img>
     </div>
+
+
+    <script type="text/javascript">
+    
+    var genMeme = function() {
+
+        data = {
+            'text': $("input[name=text]").val(),
+            'template': $('select[name=template]').val()
+        }
+
+        $('#spinner').show();
+
+        $.ajax({
+            url: '/gen_meme',
+            type: 'POST',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (data) {
+                console.log(data)
+                var str = data.meme;
+                document.getElementById('imgElem').setAttribute('src', "data:image/jpg;base64," + str.substring(2, str.length - 1));
+                $('#spinner').hide();
+            }
+        })
+    }
+    
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

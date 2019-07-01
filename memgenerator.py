@@ -4,8 +4,10 @@ import PIL
 from PIL import ImageFont
 from PIL import Image
 from PIL import ImageDraw
+from io import BytesIO
 
 import sys
+import base64
 
 fontName = "roboto.ttf"
 
@@ -49,4 +51,9 @@ def make_meme(topString, bottomString, filename):
 	draw.text(topTextPosition, topString, (255,255,255), font=font)
 	draw.text(bottomTextPosition, bottomString, (255,255,255), font=font)
 
-	img.save("static/temp.png")
+	buffered = BytesIO()
+	# img.save("static/temp.png")
+
+	img.save(buffered, format="JPEG")
+	img_str = base64.b64encode(buffered.getvalue())
+	return img_str
