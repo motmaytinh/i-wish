@@ -40,6 +40,6 @@ def gen_meme():
         ret = make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH",
                     "templates/template" + str(random.randint(0, 2)) + ".jpg")
     else:
-        ret = make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH", "templates/" + choice)
+        ret = make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH", "templates/" + template)
 
     return jsonify({'meme': str(ret)})
