@@ -1,5 +1,5 @@
 <!doctype html>
-<title>Duc Linh meme</title>
+<title>Đức Linh meme</title>
 <html>
 
 <head>
@@ -7,82 +7,104 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
-    <div align="center">
-        <div class="guide">
-            <p><s>Đọc kĩ hướng dẫn sữ dụng trước khi dùng</s>
-                <br>Để mặc định và bấm nút thì ra hình và điều ước ngẫu nhiên
-                <br>Nhập điều ước vào ô hoặc chọn từ danh sách thuộc tính có sẵn của Đức Linh =))
-                <br>Chọn hình hoặc để Đức Linh chọn một hình ngẫu nhiên (mời đóng góp thêm những khoảnh khắc bá đạo của Đức Linh)
-                <br>Bấm vào hình để tải xuống.
-                <br>Nếu gặp tình trạng bấm nút mà hình không đổi thì cứ bấm vào hình để tải xuống sẽ vẫn ra hình mới. Đó không phải bug, cũng không phải tính năng mà vì hình của Đức Linh quá nặng, không thể di dời.
-                <br>Muốn tham gia xây dựng app hãy nói với bạn Quý
-                <br>
-            </p>
-        </div>
-        <form action="/" method="POST">
-            Ước gì
-            <input list="text" name="text" /> như Đức Linh
-            <datalist id="text">
-                {% for item in list %}
-                <option value="{{ item }}">
-                {% endfor %}
-            </datalist>
-            <br>
-            <br> Chọn hình
-            <select name="template">
-                <option value="random">Để Đức Linh quyết định</option>
-                <option value="template0.jpg">Mặt ngầu vãi đái</option>
-                <option value="template1.jpg">Soái ca sơ mi trắng</option>
-                <option value="template2.jpg">Coi chừng bố mày</option>
-                <option value="template3.jpg">Sinh viên thanh lịch</option>
-            </select>
-            <br>
-            <br>
-            <button type="button" class="shadow-sm btn btn-primary" id="submit-qas" onmouseup="genMeme()">
-                <span id="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display:none;"></span>
-                Thặc thú zị
-            </button>
-        </form>
-    </div>
-    <div align="center" id="img">
-        <img id="imgElem"></img>
-    </div>
 
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-sm-7">
+                <h3><s>Đọc kĩ hướng dẫn sữ dụng trước khi dùng</s></h3>
+                <p>
+                    <br>Để mặc định và bấm nút thì ra hình và điều ước ngẫu nhiên
+                    <br>Nhập điều ước vào ô hoặc chọn từ danh sách thuộc tính có sẵn của Đức Linh
+                    <br>Chọn hình hoặc để Đức Linh chọn một hình ngẫu nhiên (mời đóng góp thêm những khoảnh khắc bá đạo
+                    của Đức Linh)
+                    <br>Bấm vào hình để tải xuống.
+                    <br>Nếu gặp tình trạng bấm nút mà hình không đổi thì cứ bấm vào hình để tải xuống sẽ vẫn ra hình
+                    mới. Đó không phải bug, cũng không phải tính năng mà vì hình của Đức Linh quá nặng, không thể di
+                    dời.
+                    <br>Muốn tham gia xây dựng app hãy nói với bạn Quý
+                    <br>
+                </p>
+            </div>
+            <div class="col-sm-5 bg-light">
+                <h3>Bảng điều khiển</h3>
+                <div class="card border-light m-0 p-0 rounded shadow">
+                    <div class="card-body">
+                        <form action="/" method="POST">
+                            ƯỚC GÌ  
+                            <input list="text" name="text" style="width: 156px"/> NHƯ ĐỨC LINH
+                            <datalist id="text">
+                                {% for item in list %}
+                                <option value="{{ item }}">
+                                    {% endfor %}
+                            </datalist>
+                            <br>
+                            <br> Chọn hình
+                            <select name="template">
+                                <option value="random">Để Đức Linh quyết định</option>
+                                <option value="template0.jpg">Mặt ngầu vãi đái</option>
+                                <option value="template1.jpg">Soái ca sơ mi trắng</option>
+                                <option value="template2.jpg">Coi chừng bố mày</option>
+                                <option value="template3.jpg">Sinh viên thanh lịch</option>
+                            </select>
+                            <br>
+                            <br>
+                            <button type="button" class="shadow-sm btn btn-primary" id="submit-qas"
+                                onmouseup="genMeme()">
+                                <span id="spinner" class="spinner-border spinner-border-sm" role="status"
+                                    aria-hidden="true" style="display:none;"></span>
+                                Thặc thú zị
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        
+        <div class="row">
+            <div class="col text-center">
+                <a download="duc-linh-meme.jpg"><img id="imgElem" class="img-fluid img-responsive" name="duc-linh-meme.jpg"></img></a>
+            </div>
+        </div>
+    </div>
 
     <script type="text/javascript">
-    
-    var genMeme = function() {
 
-        data = {
-            'text': $("input[name=text]").val(),
-            'template': $('select[name=template]').val()
+        var genMeme = function () {
+
+            data = {
+                'text': $("input[name=text]").val(),
+                'template': $('select[name=template]').val()
+            }
+
+            $('#spinner').show();
+
+            $.ajax({
+                url: '/gen_meme',
+                type: 'POST',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (data) {
+                    console.log(data)
+                    var str = data.meme;
+                    document.getElementById('imgElem').setAttribute('src', "data:image/jpg;base64," + str.substring(2, str.length - 1));
+                    $('#spinner').hide();
+                }
+            })
         }
 
-        $('#spinner').show();
 
-        $.ajax({
-            url: '/gen_meme',
-            type: 'POST',
-            data: JSON.stringify(data),
-            dataType: 'json',
-            contentType: 'application/json',
-            success: function (data) {
-                console.log(data)
-                var str = data.meme;
-                document.getElementById('imgElem').setAttribute('src', "data:image/jpg;base64," + str.substring(2, str.length - 1));
-                $('#spinner').hide();
-            }
-        })
-    }
-    
+
+
     </script>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"

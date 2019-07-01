@@ -9,6 +9,8 @@ import base64
 app = Flask(__name__)
 
 ADJ = open("adj.txt").read().split('\n')
+WISH = "ƯỚC GÌ "
+LIKE_SOMEONE = "NHƯ ĐỨC LINH"
 
 @app.route('/', methods=['GET'])
 def index():
@@ -31,15 +33,15 @@ def gen_meme():
     ret = ''
 
     if template == 'random' and adj == '':
-        ret = make_meme("ƯỚC GÌ " + ADJ[random.randint(0, len(ADJ) - 1)], "NHƯ ĐỨC LINH",
+        ret = make_meme(WISH + ADJ[random.randint(0, len(ADJ) - 1)], LIKE_SOMEONE,
                     "templates/template" + str(random.randint(0, 2)) + ".jpg")
     elif adj == '':
-        ret = make_meme("ƯỚC GÌ " + ADJ[random.randint(0, len(ADJ) - 1)], "NHƯ ĐỨC LINH",
+        ret = make_meme(WISH + ADJ[random.randint(0, len(ADJ) - 1)], LIKE_SOMEONE,
                     "templates/" + template)
     elif template == 'random':
-        ret = make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH",
+        ret = make_meme(WISH + adj, LIKE_SOMEONE,
                     "templates/template" + str(random.randint(0, 2)) + ".jpg")
     else:
-        ret = make_meme("ƯỚC GÌ " + adj, "NHƯ ĐỨC LINH", "templates/" + template)
+        ret = make_meme(WISH + adj, LIKE_SOMEONE, "templates/" + template)
 
     return jsonify({'meme': str(ret)})

@@ -1,23 +1,13 @@
-.center {
-    display: block;
-    text-align: center;
-    object-fit: none;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+.container {
+    font-family: 'Open Sans', sans-serif;
 }
 
-form {
-    margin: 10px;
-    display: inline-block;
-    text-align: center;
+#imgElem {
+    width: 300px;
 }
 
-.guide {
-    margin: 15px;
-    text-align: center;
-    border-style: dashed;
-    background-color: lightblue;
-}
-
-#img {
-    width: 100px;
-    height: 100px;
+img {
+    max-width: 98%;
 }
