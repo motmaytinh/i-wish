@@ -31,16 +31,18 @@ def gen_meme():
         template = 'random'
 
     ret = ''
+    a_random_int = str(random.randint(0, 5))
+    a_random_adj = ADJ[random.randint(0, len(ADJ) - 1)]
 
     if template == 'random' and adj == '':
-        ret = make_meme(WISH + ADJ[random.randint(0, len(ADJ) - 1)], LIKE_SOMEONE,
-                    "templates/template" + str(random.randint(0, 2)) + ".jpg")
+        ret = make_meme(WISH + a_random_adj, LIKE_SOMEONE,
+                    "templates/template" + a_random_int + ".jpg")
     elif adj == '':
-        ret = make_meme(WISH + ADJ[random.randint(0, len(ADJ) - 1)], LIKE_SOMEONE,
+        ret = make_meme(WISH + a_random_adj, LIKE_SOMEONE,
                     "templates/" + template)
     elif template == 'random':
         ret = make_meme(WISH + adj, LIKE_SOMEONE,
-                    "templates/template" + str(random.randint(0, 2)) + ".jpg")
+                    "templates/template" + a_random_int + ".jpg")
     else:
         ret = make_meme(WISH + adj, LIKE_SOMEONE, "templates/" + template)
 
