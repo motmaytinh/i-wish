@@ -31,7 +31,7 @@ def gen_meme():
         template = 'random'
 
     ret = ''
-    a_random_int = str(random.randint(0, 5))
+    a_random_int = str(random.randint(0, 7))
     a_random_adj = ADJ[random.randint(0, len(ADJ) - 1)]
 
     if template == 'random' and adj == '':
